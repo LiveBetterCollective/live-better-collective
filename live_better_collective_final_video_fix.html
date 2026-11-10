@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Live Better Collective | Your Story. Our Strategy.</title>
+<meta name="description" content="Discover your story, learn a digital marketing strategy, and explore another potential income stream with the Live Better Collective.">
+<script>
+(function () {
+  var match = location.search.match(/[?&]look=(blue|light)(&|$)/);
+  var look = match ? match[1] : location.hash.slice(1);
+  if (look === "blue" || look === "light") document.documentElement.dataset.look = look;
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap">
+<style>
+/* Layout: Tina's section-by-section format. Black and hot pink by default; ?look=blue swaps the accent, ?look=light restores her original white and pink. */
+:root {
+  --bg: #0a0a0a; --alt: #141014; --band: #1f0d17; --surface: #181216; --input: #0a0a0a;
+  --ink: #ffffff; --muted: #c9bdc4; --line: #3a2c34; --chip-line: #5a2f45;
+  --accent: #ff2a93; --on-accent: #0a0a0a; --soft: #3d1028; --eyebrow: #ff5aa9; --focus: #ffffff;
+  --glow: #4a0f2c; --hero-from: #0a0a0a; --hero-to: #0a0a0a; --hero-text: #e9e0e5;
+  --art-bg: var(--accent); --art-ink: #0a0a0a; --art-small: #0a0a0a; --art-hi: #ffffff; --art-glyph: rgba(0, 0, 0, .16); --art-shadow: #3d1028;
+  --final-bg: var(--accent); --final-ink: #0a0a0a; --final-muted: #1a0a12; --final-eyebrow: #0a0a0a; --final-btn: #0a0a0a; --final-btn-ink: #ffffff;
+  --video-bg: #181216; --warn-bg: #3b1c1c; --warn-ink: #ffc0c0;
+  --font: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: dark;
+}
+:root[data-look="blue"] {
+  --accent: #38a3ff; --soft: #0f2a44; --eyebrow: #6dbcff; --glow: #0f2a44; --art-shadow: #0f2a44;
+  --alt: #101419; --band: #0e1a26; --surface: #12161b; --muted: #bcc6d0; --line: #2a343f; --chip-line: #2f4a63; --video-bg: #12161b;
+}
+:root[data-look="light"] {
+  --bg: #ffffff; --alt: #fffafc; --band: #fff0f6; --surface: #ffffff; --input: #ffffff;
+  --ink: #211a27; --muted: #6e6571; --line: #eee0e7; --chip-line: #f3c9dc;
+  --accent: #f12b83; --on-accent: #ffffff; --soft: #fff0f6; --eyebrow: #c51f6c; --focus: #211a27;
+  --glow: #ffc9df; --hero-from: #fff6fa; --hero-to: #ffffff; --hero-text: #554b58;
+  --art-bg: #231a27; --art-ink: #ffffff; --art-small: #ffc1dc; --art-hi: #ff70ad; --art-glyph: #f12b834d; --art-shadow: #ffd5e5;
+  --final-bg: #241b28; --final-ink: #ffffff; --final-muted: #eedce6; --final-eyebrow: #ff91c1; --final-btn: #f12b83; --final-btn-ink: #ffffff;
+  --video-bg: #241b28; --warn-bg: #fbeaea; --warn-ink: #8f2424;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: var(--font); color: var(--ink); background: var(--bg); line-height: 1.6; font-size: 18px; }
+[hidden] { display: none !important; }
+a { color: inherit; }
+button, input, textarea { font: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.top { border-bottom: 1px solid var(--line); background: var(--bg); position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; }
+.nav { height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.brand { font-weight: 900; letter-spacing: -.06em; font-size: 21px; line-height: 1; }
+.brand span { color: var(--accent); }
+.nav a.link { font-size: 14px; font-weight: 700; text-decoration: none; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; border: 0; background: var(--accent); color: var(--on-accent); border-radius: 100px; padding: 15px 24px; font-weight: 800; text-decoration: none; transition: transform .2s; text-align: center; }
+.btn:hover { transform: translateY(-2px); }
+.btn:disabled { opacity: .65; cursor: progress; transform: none; }
+.btn.quiet { background: var(--soft); color: var(--eyebrow); font-size: 15px; padding: 10px 16px; align-self: flex-start; }
+.eyebrow { font-size: 13px; letter-spacing: .15em; text-transform: uppercase; font-weight: 900; color: var(--eyebrow); }
+
+.hero { background: radial-gradient(circle at 86% 18%, var(--glow) 0, transparent 32%), linear-gradient(135deg, var(--hero-from), var(--hero-to) 75%); padding-block: 84px 82px; }
+.hero-grid { display: grid; grid-template-columns: 1.25fr .75fr; align-items: center; gap: 55px; }
+.hero-grid > *, .cols > * { min-width: 0; }
+.hero h1 { font-size: clamp(40px, 5.6vw, 70px); letter-spacing: -.055em; line-height: 1.06; margin: 18px 0 24px; text-wrap: balance; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero p { font-size: 20px; max-width: 650px; color: var(--hero-text); margin: 0 0 26px; }
+.hero .sub { font-size: 15px; margin-top: 19px; color: var(--muted); }
+.hero .sponsor { font-size: 15px; margin-top: 8px; color: var(--muted); }
+.hero .sponsor b { color: var(--ink); }
+.art { background: var(--art-bg); color: var(--art-ink); min-height: 400px; border-radius: 34px; position: relative; overflow: hidden; padding: 34px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 20px 24px 0 var(--art-shadow); gap: 20px; }
+.art::before { content: "\201C"; font-family: Georgia, serif; font-size: 280px; line-height: 1; position: absolute; right: 20px; top: -38px; color: var(--art-glyph); }
+.art .big { font-size: clamp(29px, 3.2vw, 44px); font-weight: 900; line-height: 1.14; letter-spacing: -.045em; z-index: 1; }
+.art .hi { color: var(--art-hi); }
+.art .small { z-index: 1; color: var(--art-small); font-weight: 700; letter-spacing: .02em; font-size: 15px; }
+
+.section { padding-block: 84px; }
+.section.pale { background: var(--alt); }
+.section.pink { background: var(--band); }
+.center { text-align: center; }
+.section h2 { font-size: clamp(30px, 4vw, 47px); letter-spacing: -.045em; line-height: 1.15; margin: 10px 0 18px; text-wrap: balance; }
+.section p { margin: 0 0 16px; }
+.lead { color: var(--muted); font-size: 19px; max-width: 720px; margin: 0 auto 30px !important; }
+.storychips { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 30px 0; }
+.chip { background: var(--surface); border: 1px solid var(--chip-line); border-radius: 50px; padding: 11px 17px; font-weight: 600; font-size: 15px; }
+.strongline { font-weight: 800; font-size: 21px; }
+
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 45px; align-items: center; }
+.cols.solo { grid-template-columns: minmax(0, 760px); }
+.frame, .placeholder { position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; border-radius: 24px; overflow: hidden; background: var(--video-bg); }
+.media.vertical { width: 100%; max-width: 340px; min-width: 0; justify-self: center; }
+.media.vertical .frame { aspect-ratio: 9 / 16; }
+.frame img, .frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; object-fit: cover; }
+button.frame { padding: 0; border: 0; }
+.play { position: absolute; left: 50%; top: 50%; width: 78px; height: 78px; margin: -39px 0 0 -39px; border-radius: 50%; background: var(--accent); }
+.play::after { content: ""; position: absolute; left: 30px; top: 22px; border-style: solid; border-width: 17px 0 17px 27px; border-color: transparent transparent transparent var(--on-accent); }
+.placeholder { display: grid; place-items: center; padding: 20px; text-align: center; color: var(--muted); border: 2px dashed var(--accent); font-weight: 700; }
+
+.demo { background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 28px; display: grid; gap: 14px; }
+.demo label, .capture label { display: block; font-weight: 800; font-size: 16px; }
+.labelrow { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.linkish { background: none; border: 0; padding: 0; color: var(--eyebrow); text-decoration: underline; font-size: 15px; }
+textarea, input[type="text"], input[type="email"] { width: 100%; background: var(--input); color: var(--ink); border: 1px solid var(--line); border-radius: 13px; padding: 14px 15px; font-size: 16px; }
+.demo textarea { min-height: 140px; resize: vertical; }
+.demo .btn { width: 100%; }
+.tiny { font-size: 13px; color: var(--muted); }
+.demo .tiny, .section .tiny { margin: 0; }
+.count { font-size: 13px; color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; }
+.error { background: var(--warn-bg); color: var(--warn-ink); padding: 11px 14px; border-radius: 10px; font-size: 15px; margin: 0; }
+
+.notice { background: var(--soft); color: var(--ink); padding: 11px 15px; border-radius: 10px; font-size: 15px; margin: 0 0 20px !important; }
+.ideas { display: grid; gap: 18px; margin-top: 8px; }
+@media (min-width: 980px) { .ideas { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.idea { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.angle { font-size: 13px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; color: var(--eyebrow); }
+.idea h3 { font-size: 22px; letter-spacing: -.02em; line-height: 1.2; margin: 0; }
+.idea .post { white-space: pre-wrap; overflow-wrap: anywhere; flex: 1; font-size: 16px; margin: 0; }
+.idea .why { font-size: 14px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 12px; margin: 0; }
+.idea .why b { color: var(--ink); }
+.again { margin: 20px 0 0 !important; }
+
+.capture { background: var(--soft); }
+.capture .inner { max-width: 620px; }
+.capture form { display: grid; gap: 14px; }
+.two { display: grid; gap: 14px; grid-template-columns: 1fr 1fr; }
+.two label { display: grid; gap: 6px; }
+.consent { display: flex !important; gap: 10px; align-items: flex-start; font-weight: 500 !important; font-size: 15px !important; }
+.consent input { margin-top: 4px; width: 18px; height: 18px; flex: none; accent-color: var(--accent); }
+.done { display: grid; gap: 12px; justify-items: start; }
+
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 17px; margin-top: 34px; text-align: left; }
+.tile { border: 1px solid var(--line); border-radius: 20px; padding: 25px; background: var(--surface); min-width: 0; }
+.num { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; background: var(--soft); color: var(--eyebrow); font-weight: 900; }
+.tile h3 { font-size: 19px; letter-spacing: -.02em; line-height: 1.25; margin: 16px 0 7px; }
+.tile p { color: var(--muted); font-size: 16px; margin: 0; }
+.support { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-top: 32px; text-align: left; }
+.symbol { font-size: 30px; line-height: 1.2; }
+.included { font-size: 22px; font-weight: 800; margin-top: 34px !important; }
+.quote { font-size: clamp(26px, 3.8vw, 44px); font-weight: 800; letter-spacing: -.04em; line-height: 1.2; max-width: 800px; margin: 0 auto 25px !important; text-wrap: balance; }
+.note { background: var(--surface); border-left: 4px solid var(--accent); padding: 22px 24px; border-radius: 0 14px 14px 0; color: var(--muted); }
+.note strong { color: var(--ink); }
+.note p:last-child { margin-bottom: 0; }
+
+.final { background: var(--final-bg); color: var(--final-ink); text-align: center; padding-block: 80px; }
+.final .eyebrow { color: var(--final-eyebrow); }
+.final h2 { font-size: clamp(32px, 5vw, 52px); line-height: 1.1; letter-spacing: -.045em; margin: 12px auto 20px; max-width: 740px; text-wrap: balance; }
+.final p { color: var(--final-muted); max-width: 680px; margin: 0 auto 28px; font-weight: 500; }
+.final .btn { background: var(--final-btn); color: var(--final-btn-ink); }
+.final-video { max-width: 720px; margin: 0 auto 28px; }
+.final .media.vertical { max-width: 340px; margin-inline: auto; }
+.final .placeholder { border-color: var(--final-ink); color: var(--final-ink); background: transparent; }
+.final .tiny { color: var(--final-muted); margin: 19px auto 0; font-size: 14px; }
+
+.faq { max-width: 800px; margin: 30px auto 0; }
+.faq details { border-bottom: 1px solid var(--line); padding: 17px 0; }
+.faq summary { font-weight: 800; cursor: pointer; }
+.faq p { color: var(--muted); margin: 10px 0 0; }
+.footer { padding-block: 28px; color: var(--muted); font-size: 13px; }
+.footer .wrap { display: flex; justify-content: space-between; gap: 12px 20px; flex-wrap: wrap; }
+
+@media (max-width: 760px) {
+  .hero { padding-block: 55px 65px; }
+  .hero-grid, .cols { grid-template-columns: minmax(0, 1fr); gap: 30px; }
+  .art { min-height: 260px; box-shadow: 9px 12px 0 var(--art-shadow); }
+  .steps, .support { grid-template-columns: 1fr 1fr; }
+  .section { padding-block: 64px; }
+  .nav .link { display: none; }
+}
+@media (max-width: 500px) {
+  .steps, .support, .two { grid-template-columns: minmax(0, 1fr); }
+  .hero h1 { font-size: 42px; }
+  .hero p { font-size: 18px; }
+  .section h2 { font-size: 33px; }
+  .nav { height: 64px; }
+  .brand { font-size: 18px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn { transition: none; } }
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap nav"><div class="brand">THE LIVE BETTER <span>COLLECTIVE.</span></div><a class="link" href="#meet">Start here ↓</a></div></header>
+
+<main>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">Your next chapter can start here</div>
+        <h1>Your story could be the start of <em>something bigger.</em></h1>
+        <p>What if you could learn to turn your experiences into content that connects with people, and use those skills to explore another potential stream of income?</p>
+        <a class="btn" href="#meet">Meet Tina — Start Here →</a>
+        <div class="sub">No marketing degree. No big following. A real place to start learning.</div>
+        <div class="sponsor" id="sponsor" hidden>Shared with you by <b id="sponsorName"></b></div>
+      </div>
+      <div class="art">
+        <div class="small">THE LIVE BETTER COLLECTIVE</div>
+        <div class="big">Your Story.<br>Our Strategy.<br>A Business Partner.<br><span class="hi">A Community Behind You.</span></div>
+        <div class="small">LEARN • CREATE • CONNECT • GROW</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section pale" id="meet">
+    <div class="wrap cols" id="meetCols">
+      <div>
+        <div class="eyebrow">A quick hello</div>
+        <h2>Hi, I'm Tina. I built the kind of support I wish more people had.</h2>
+        <p>I've seen people get excited about building something new, and then get stuck wondering what to say, who to talk to, or how to find their audience.</p>
+        <p>I believe we can teach those skills instead of expecting people to figure everything out alone. That's why I created the Live Better Collective.</p>
+        <p><strong>We don't just hand you an opportunity. We help you learn how to market.</strong></p>
+      </div>
+      <div class="media vertical" id="media">
+        <div class="frame"><iframe src="https://www.youtube.com/embed/YZpvnxopQSc" title="Meet Tina — Welcome to The Live Better Collective" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="story">
+    <div class="wrap center">
+      <div class="eyebrow">First, let's talk about you</div>
+      <h2>You already have something worth sharing.</h2>
+      <p class="lead">You don't need a dramatic success story or a perfect life. The things you've experienced may be exactly what helps someone else feel seen.</p>
+      <div class="storychips"><span class="chip">Starting over</span><span class="chip">Raising a family</span><span class="chip">Changing careers</span><span class="chip">Navigating midlife</span><span class="chip">Learning something new</span><span class="chip">Wanting more options</span></div>
+      <p class="strongline">Your story is the starting point. Strategy gives it direction.</p>
+    </div>
+  </section>
+
+  <section class="section pink" id="demo">
+    <div class="wrap cols">
+      <div>
+        <div class="eyebrow">Try the idea for yourself</div>
+        <h2>See how one experience can inspire three post ideas.</h2>
+        <p>Imagine having a coach who helps you discover what makes your story relatable, identify who you want to reach, and find the words to say it.</p>
+        <p><strong>That's the thinking behind COACH.</strong> The real experience goes further: guided questions, content strategy, hooks, captions, and ongoing learning.</p>
+      </div>
+      <form class="demo" id="storyForm" novalidate>
+        <div class="labelrow">
+          <label for="storyInput">What's one experience that has shaped you?</label>
+          <button type="button" class="linkish" id="useExample">Use an example</button>
+        </div>
+        <textarea id="storyInput" maxlength="1500" required></textarea>
+        <div class="count"><span id="count">0</span> / 1500</div>
+        <p class="error" id="storyError" role="alert" hidden></p>
+        <button class="btn" id="writeBtn" type="submit">Show me 3 sample post ideas →</button>
+        <p class="tiny">This is a sample demonstration. Your story stays in this browser; the example ideas are not personalized AI output.</p>
+      </form>
+    </div>
+  </section>
+
+  <section class="section" id="results" hidden tabindex="-1" aria-live="polite">
+    <div class="wrap">
+      <div class="eyebrow">Story Strategy sample ideas</div>
+      <h2>Three ways to tell your story</h2>
+      <p class="lead" style="margin-left:0 !important">This is a starter demonstration using example ideas, not personalized AI output. COACH would help refine a message to sound like you. Make sure every line is true before you post.</p>
+      <p class="notice" id="previewNote" hidden>Preview only: these are sample ideas, not generated from what you typed.</p>
+      <div class="ideas" id="ideas"></div>
+      <p class="again"><button type="button" class="linkish" id="tryAgain">Try a different part of your story</button></p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap center">
+      <div class="eyebrow">The story is only the beginning</div>
+      <h2>We teach you what to do next.</h2>
+      <p class="lead">A story can start a connection. A strategy helps you build an audience, communicate value, and put your skills to work.</p>
+      <div class="steps">
+        <div class="tile"><div class="num">1</div><h3>Discover your message</h3><p>Find the experiences, values, and perspectives that make your voice your own.</p></div>
+        <div class="tile"><div class="num">2</div><h3>Learn the strategy</h3><p>Understand your audience, create purposeful content, and build relationships without chasing people.</p></div>
+        <div class="tile"><div class="num">3</div><h3>Apply the skills</h3><p>Use what you're learning to explore product marketing and a real business opportunity, with guidance along the way.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section pale">
+    <div class="wrap center">
+      <div class="eyebrow">You are not doing this alone</div>
+      <h2>The roadmap, tools, and community are already here.</h2>
+      <p class="lead">You don't have to buy a stack of courses or piece together a training plan. Our team has a guided place to learn, practice, and keep growing.</p>
+      <div class="support">
+        <div class="tile"><div class="symbol">🧭</div><h3>Guided starting path</h3><p>Clear onboarding and step-by-step activities so you know where to begin.</p></div>
+        <div class="tile"><div class="symbol">✨</div><h3>Interactive AI COACH</h3><p>Help developing your story, content ideas, hooks, and marketing approach.</p></div>
+        <div class="tile"><div class="symbol">📚</div><h3>Transferable skills</h3><p>Storytelling, digital marketing, content creation, and audience development.</p></div>
+        <div class="tile"><div class="symbol">💗</div><h3>Real community</h3><p>Learn alongside people who value progress, support, and putting skills into practice.</p></div>
+      </div>
+      <p class="included">The training is included for our team, with no separate course tuition.</p>
+      <p class="tiny">Free affiliate enrollment is available through our business partner. Eligibility for specific team resources and any optional business purchases will be explained before enrollment.</p>
+    </div>
+  </section>
+
+  <section class="section pink">
+    <div class="wrap center">
+      <div class="eyebrow">A different way to begin</div>
+      <p class="quote">"We didn't just build a team to join. We built a place to learn how to build."</p>
+      <p class="lead">Whether you've tried network marketing before or you're completely new, you deserve more than a link and a list of people to contact.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap cols">
+      <div>
+        <div class="eyebrow">Putting the skills to work</div>
+        <h2>So what business are we building with?</h2>
+        <p>We chose <strong>network marketing as our business model</strong> because it offers an existing product, ordering, and fulfillment infrastructure, and the potential to earn commissions from qualifying customer purchases and team sales.</p>
+        <p>Our business partner offers a free affiliate starting option, so you can begin learning about product promotion without purchasing inventory.</p>
+        <p><strong>The skills you learn aren't limited to one company.</strong> The opportunity we use to apply them is a specific network marketing business, which we explain in the next step.</p>
+      </div>
+      <div class="note">
+        <strong>Why this matters</strong>
+        <p>Building a business still takes work. Repeat commissions depend on actual repeat customer activity, and team earnings depend on qualifying sales and compensation-plan rules. Neither income nor success is guaranteed.</p>
+        <p>Our goal is to help you understand the strategy, the tools, and the business so you can decide whether it's right for you.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="final" id="next">
+    <div class="wrap">
+      <div class="eyebrow">Your story. Our strategy. A community behind you.</div>
+      <h2>Ready to see the business behind the Collective?</h2>
+      <p>Meet our business partner, Zilara. Explore the products, free affiliate option, compensation structure, requirements, and how the Collective supports your learning.</p>
+      <div class="media final-video" id="zilaraMedia" hidden></div>
+      <a class="btn" id="finalBtn" href="https://watchwithtina.com/">I’m Interested — Show Me How It Works →</a>
+      <p class="tiny">Enter your information on the next page to request the full presentation. No enrollment is required to view it.</p>
+    </div>
+  </section>
+
+  <section class="section pale">
+    <div class="wrap">
+      <div class="center"><div class="eyebrow">A few good questions</div><h2>Wondering where you fit?</h2></div>
+      <div class="faq">
+        <details><summary>Do I need marketing experience?</summary><p>No. The Collective is designed to help people learn practical skills step by step, starting with their own experiences and interests.</p></details>
+        <details><summary>Do I need to buy products to create content?</summary><p>You can create accurate educational content from approved product information without claiming you've personally used a product. Any personal testimonial must reflect genuine experience, and all claims must follow company policies and applicable advertising rules.</p></details>
+        <details><summary>Is this network marketing?</summary><p>Yes. We teach transferable digital marketing skills inside a community built around a network marketing opportunity. Our business partner is Zilara. You can review the model, products, compensation, and requirements before deciding whether to participate.</p></details>
+        <details><summary>Does it cost money to get started?</summary><p>Our business partner offers a free affiliate option. Team education is offered without separate course tuition; specific access terms and optional purchases should be confirmed before enrollment. Earning commissions requires qualifying sales.</p></details>
+        <details><summary>Will I earn money if I follow the training?</summary><p>No income is guaranteed. Training can help you develop skills, but outcomes depend on factors including customer demand, effort, expenses, and the business's compensation rules.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <span>© 2026 The Live Better Collective · Independent education community</span>
+    <span>Independent Zilara affiliate team · Not a corporate Zilara website</span>
+    <span>AI-written posts are suggestions. You are responsible for making sure anything you post is true and follows your company's rules.</span>
+  </div>
+</footer>
+
+<script>
+const CONFIG = {
+  live: false,                  // sample-only Story Strategy demo; no AI backend configured
+  klaviyoPublicKey: "S6vevK",   // public by design; safe to appear in a web page
+  klaviyoListId: "SCDLKx",      // "Email List" in Klaviyo
+  klaviyoRevision: "2026-10-15",
+  videoUrl: "https://youtube.com/shorts/YZpvnxopQSc", // Tina's welcome video
+  zilaraVideoUrl: "https://youtu.be/g7fRFlRXac0", // Zilara introduction
+  photo: ""                     // Tina's photo; used alone, or as the cover of the video
+};
+
+const $ = id => document.getElementById(id);
+const IS_BLUE = document.documentElement.dataset.look === "blue";
+
+const EXAMPLE = IS_BLUE
+  ? "I spent twenty years working overtime and telling myself it was for my family. One night my son asked if I was coming to his game, and I realized I had missed most of them. I started small, leaving on time two days a week, and slowly I got back to being present. Now I want to help other guys who feel stuck on the treadmill."
+  : "I spent years saying yes to everybody and putting myself last. One morning I sat in my car in the driveway and realized I couldn't remember the last time I did something just for me. I started small, ten quiet minutes a day, and slowly I began to feel like myself again. Now I want to help other women stop running on empty.";
+
+const SAMPLE = {
+  turning_point: { hook: "I sat in my driveway and couldn't go inside.", post: "I sat in my driveway and couldn't go inside.\n\nNothing was wrong, exactly. I just couldn't remember the last time I'd done one thing for me.\n\nI had said yes to everybody for years. Somewhere along the way, I stopped being on my own list.\n\nSo I started small. Ten quiet minutes a day.\n\nIt didn't fix my life. It gave me back to myself.\n\nHave you ever had a driveway moment?", why: "A specific, honest moment lets the right reader think, \"That's me.\"" },
+  lesson: { hook: "Three signs you're running on empty.", post: "Three signs you're running on empty, from someone who ignored them for years:\n\n1. You can't name the last thing you did just for you.\n2. \"I'm fine\" comes out before you've even thought about it.\n3. Ten minutes alone feels selfish.\n\nHere's what helped me: I put ten quiet minutes on the calendar, like any other appointment.\n\nTry it tomorrow. Which of these three sounds most like you?", why: "Useful advice builds trust before you ever ask anyone for anything." },
+  conversation: { hook: "Be honest. When did you last do something just for you?", post: "Be honest. When did you last do something just for you?\n\nI'll go first. For a long time, my answer was \"I can't remember.\"\n\nThat's what started changing things for me.\n\nTell me yours in the comments. No judgment here. I read every one.", why: "A simple question starts real conversations, and that's where relationships begin." }
+};
+
+const ANGLES = [["turning_point", "The Turning Point"], ["lesson", "The Lesson"], ["conversation", "The Conversation Starter"]];
+
+const params = new URLSearchParams(location.search);
+const sponsorName = (params.get("by") || "").replace(/[\u0000-\u001f<>]/g, "").trim().slice(0, 40);
+const sponsorLink = safeContactLink(params.get("m"));
+
+function safeContactLink(value) {
+  if (!value) return "";
+  try {
+    const url = new URL(value);
+    const allowed = ["m.me", "facebook.com", "www.facebook.com", "messenger.com", "www.messenger.com", "tiktok.com", "www.tiktok.com", "instagram.com", "www.instagram.com"];
+    return url.protocol === "https:" && allowed.includes(url.hostname) ? url.href : "";
+  } catch { return ""; }
+}
+
+if (sponsorName) { $("sponsorName").textContent = sponsorName; $("sponsor").hidden = false; }
+
+function youtubeInfo(url) {
+  const match = String(url).match(/(?:youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{11})/);
+  return match ? { id: match[1], vertical: /\/shorts\//.test(url) } : null;
+}
+
+// The video loads only when someone presses play, which keeps the page fast on phones.
+function renderMedia() {
+  // Welcome video is embedded directly in HTML so it is always visible.
+  fillMedia($("zilaraMedia"), CONFIG.zilaraVideoUrl, "", "Introduction to Zilara", "Your Zilara intro video goes here");
+}
+
+function fillMedia(media, videoUrl, photo, title, emptyText) {
+  const video = youtubeInfo(videoUrl);
+  media.replaceChildren();
+  media.classList.toggle("vertical", Boolean(video && video.vertical));
+  const nothing = !video && !photo;
+  media.hidden = nothing && CONFIG.live;
+  if (media.hidden) return;
+
+  if (nothing) {
+    const empty = document.createElement("div");
+    empty.className = "placeholder";
+    empty.textContent = emptyText;
+    media.append(empty);
+    return;
+  }
+
+  const image = document.createElement("img");
+  image.src = photo || "https://i.ytimg.com/vi/" + video.id + "/hqdefault.jpg";
+  image.alt = video ? "" : "Tina";
+
+  if (!video) {
+    const frame = document.createElement("div");
+    frame.className = "frame";
+    frame.append(image);
+    media.append(frame);
+    return;
+  }
+
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "frame";
+  button.setAttribute("aria-label", "Play: " + title);
+  const play = document.createElement("span");
+  play.className = "play";
+  button.append(image, play);
+  button.addEventListener("click", () => {
+    const holder = document.createElement("div");
+    holder.className = "frame";
+    const player = document.createElement("iframe");
+    player.src = "https://www.youtube-nocookie.com/embed/" + video.id + "?autoplay=1&rel=0";
+    player.title = title;
+    player.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+    player.allowFullscreen = true;
+    holder.append(player);
+    media.replaceChildren(holder);
+  });
+  media.append(button);
+}
+renderMedia();
+
+const story = $("storyInput");
+story.placeholder = IS_BLUE
+  ? "Example: I spent years working overtime. Now I'm learning how to build something for myself."
+  : "Example: I spent years putting everyone else first. Now I'm learning how to build something for myself.";
+const updateCount = () => { $("count").textContent = story.value.length; };
+story.addEventListener("input", updateCount);
+
+$("useExample").addEventListener("click", () => { story.value = EXAMPLE; updateCount(); story.focus(); });
+$("tryAgain").addEventListener("click", () => { story.value = ""; updateCount(); $("demo").scrollIntoView({ block: "start" }); story.focus({ preventScroll: true }); });
+function showError(el, message) { el.textContent = message; el.hidden = !message; }
+
+$("storyForm").addEventListener("submit", async event => {
+  event.preventDefault();
+  const text = story.value.trim();
+  if (text.length < 30) {
+    showError($("storyError"), "Add a little more, at least a sentence or two, so the ideas sound like you.");
+    story.focus();
+    return;
+  }
+  showError($("storyError"), "");
+  const button = $("writeBtn");
+  button.disabled = true;
+  button.textContent = "Writing your ideas...";
+  try {
+    const data = CONFIG.live ? await fetchIdeas(text) : await previewIdeas();
+    renderIdeas(data);
+  } catch (error) {
+    showError($("storyError"), error.message || "Something went wrong. Please try again.");
+  } finally {
+    button.disabled = false;
+    button.textContent = "Show me 3 sample post ideas →";
+  }
+});
+
+async function fetchIdeas(text) {
+  let response;
+  try {
+    response = await fetch("/api/ideas", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ story: text, who: "" }) });
+  } catch {
+    throw new Error("We couldn't reach AI COACH. Check your connection and try again.");
+  }
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(data.error || "AI COACH couldn't write your ideas just now. Please try again.");
+  return data;
+}
+
+function previewIdeas() { return new Promise(resolve => setTimeout(() => resolve(SAMPLE), 700)); }
+
+function renderIdeas(data) {
+  const holder = $("ideas");
+  holder.replaceChildren();
+  ANGLES.forEach(([key, label]) => holder.append(ideaCard(label, data[key])));
+  $("previewNote").hidden = CONFIG.live;
+  $("results").hidden = false;
+  $("results").scrollIntoView({ block: "start" });
+  $("results").focus({ preventScroll: true });
+}
+
+function ideaCard(label, idea) {
+  const card = document.createElement("article");
+  card.className = "idea";
+  const add = (tag, className, text) => { const el = document.createElement(tag); el.className = className; el.textContent = text; card.append(el); return el; };
+  add("div", "angle", label);
+  add("h3", "", idea.hook);
+  add("p", "post", idea.post);
+  const why = add("p", "why", "");
+  const strong = document.createElement("b");
+  strong.textContent = "Why it works: ";
+  why.append(strong, document.createTextNode(idea.why));
+  const copy = document.createElement("button");
+  copy.type = "button";
+  copy.className = "btn quiet";
+  copy.textContent = "Copy this post";
+  copy.addEventListener("click", () => copyText(idea.post, copy));
+  card.append(copy);
+  return card;
+}
+
+async function copyText(text, button) {
+  try {
+    await navigator.clipboard.writeText(text);
+    button.textContent = "Copied";
+  } catch {
+    button.textContent = "Select the text above to copy";
+  }
+  setTimeout(() => { button.textContent = "Copy this post"; }, 2200);
+}
+
+// Lead capture is handled by the existing watchwithtina.com Klaviyo page.
+</script>
+</body>
+</html>
